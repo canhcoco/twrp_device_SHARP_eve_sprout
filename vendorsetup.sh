@@ -1,1 +1,1 @@
-add_lunch_combo omni_eve-userdebug
+add_lunch_combo omni_eve_sprout-userdebug
