@@ -15,5 +15,5 @@
 /persist			emmc	/dev/block/bootdevice/by-name/persist
 
 #Extra
-/devices/soc.0/7864900.sdhci/mmc_host*       auto                auto    nosuid,nodev                                                       wait,voldmanaged=sdcard1:auto,encryptable=userdata
-/devices/platform/msm_hsusb*                 auto                auto    nosuid,nodev                                                       wait,voldmanaged=usb:auto
+/devices/soc.0/7864900.sdhci/mmc_host*       auto                auto    nosuid,nodev                                                       wait,voldmanaged=sdcard1:auto,encryptable=userdata flags=display="External SDcard"
+/devices/platform/msm_hsusb*                 auto                auto    nosuid,nodev                                                       wait,voldmanaged=usb:auto flags=display="USB-OTG"
