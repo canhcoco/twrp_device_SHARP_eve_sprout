@@ -1,21 +1,19 @@
-# Android fstab file.
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+# mount point	fstype    device    	[device2]
 
-#TODO: Add 'check' as fs_mgr_flags with data partition.
-# Currently we dont have e2fsck compiled. So fs check would failed.
+/boot			emmc	/dev/block/bootdevice/by-name/boot	flags=display="Boot";backup=1;flashimg=1
+/cache			ext4	/dev/block/bootdevice/by-name/cache	flags=display="Cache";backup=1
+/firmware			emmc	/dev/block/bootdevice/by-name/modem	flags=display="firmware";backup=1;flashimg=1
+/misc		 emmc	/dev/block/bootdevice/by-name/misc	flags=display="misc";backup=1;flashimg=1
+/metadata		emmc	/dev/block/bootdevice/by-name/metadata
+/vendor			emmc	/dev/block/bootdevice/by-name/vendor	flags=display="vendor";backup=1
+/oem			emmc	/dev/block/bootdevice/by-name/oem	flags=display="oem";backup=1;flashimg=1
+/recovery		emmc	/dev/block/bootdevice/by-name/recovery	flags=display="Recovery";backup=1;backup=1
+/system			ext4	/dev/block/bootdevice/by-name/system	flags=display="System";backup=1
+/data			ext4	/dev/block/bootdevice/by-name/userdata	flags=length=-16384;encryptable=/dev/block/bootdevice/by-name/metadata;display="Data";backup=1
+#/external_sd		auto	/devices/soc.0/7864900.sdhci/mmc_host*	/devices/soc.0/7864900.sdhci/mmc_host*	flags=display="External SDcard";storage;removable;backup=0;encryptable=userdata
+#/usbotg			auto	/devices/platform/msm_hsusb*/devices/platform/msm_hsusb*	flags=display="USB-OTG";storage;removable;backup=0
+/persist			emmc	/dev/block/bootdevice/by-name/persist
 
-#<src>                                       <mnt_point>         <type>  <mnt_flags and options>                                            <fs_mgr_flags>
-/dev/block/bootdevice/by-name/system         /system             ext4    ro,barrier=1                                                       wait
-/dev/block/bootdevice/by-name/userdata       /data               f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data        wait,check,formattable,encryptable=/dev/block/bootdevice/by-name/metadata
-/dev/block/bootdevice/by-name/userdata       /data               ext4    nosuid,nodev,barrier=1,noauto_da_alloc                             wait,check,formattable,encryptable=/dev/block/bootdevice/by-name/metadata
-/dev/block/bootdevice/by-name/cache          /cache              ext4    rw,nosuid,nodev,noatime,barrier=1,data=ordered                     wait,check,formattable
-/dev/block/bootdevice/by-name/fsg            /fsg                ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:fsg_file:s0           wait
-/dev/block/bootdevice/by-name/modem          /firmware           ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0      wait
-/dev/block/bootdevice/by-name/persist        /persist            ext4    nosuid,nodev,barrier=1,noatime,noauto_da_alloc,defcontext=u:object_r:persist_file:s0                     wait
-/dev/block/bootdevice/by-name/boot           /boot               emmc    defaults                                                           recoveryonly
-/dev/block/bootdevice/by-name/recovery       /recovery           emmc    defaults                                                           recoveryonly
-/dev/block/bootdevice/by-name/misc           /misc               emmc    defaults                                                           defaults
-
+#Extra
 /devices/soc.0/7864900.sdhci/mmc_host*       auto                auto    nosuid,nodev                                                       wait,voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/msm_hsusb*                 auto                auto    nosuid,nodev                                                       wait,voldmanaged=usb:auto
