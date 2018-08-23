@@ -1,8 +1,8 @@
-DEVICE_PATH := device/SHARP/eve
+DEVICE_PATH := device/SHARP/eve_sprout
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/SHARP/eve/BoardConfigVendor.mk
+-include vendor/SHARP/eve_sprout/BoardConfigVendor.mk
 -include $(DEVICE_PATH)/config/*.mk
 
 # Bootloader

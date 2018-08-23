@@ -7,5 +7,5 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/kernel:kernel 
 
 #Extra
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/SHARP/eve/recovery/root,root)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/SHARP/eve_sprout/recovery/root,root)
     

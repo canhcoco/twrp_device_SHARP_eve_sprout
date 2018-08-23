@@ -5,4 +5,4 @@ include $(CLEAR_VARS)
 ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
 
 # include the non-open-source counterpart to this file
--include vendor/SHARP/eve/AndroidBoardVendor.mk
+-include vendor/SHARP/eve_sprout/AndroidBoardVendor.mk

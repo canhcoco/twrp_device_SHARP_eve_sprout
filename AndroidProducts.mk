@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_eve.mk
+    $(LOCAL_DIR)/omni_eve_sprout.mk
