@@ -4,6 +4,11 @@ PRODUCT_RELEASE_NAME := SG507SH
 LOCAL_PATH := device/SHARP/eve_sprout
 
 # Inherit from the common Open Source product configuration
+$(call inherit-product, build/target/product/embedded.mk)
+ 
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
+ 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
